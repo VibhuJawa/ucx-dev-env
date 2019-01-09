@@ -27,7 +27,6 @@ build: ucx-py
   UCX_PY_CUDA_PATH=/usr/local/cuda/ \
   UCX_PY_UCX_PATH="$$(pwd)/ucx/install" \
 	cd ucx-py/pybind && \
-  git apply ../../patch.patch && \
 	python setup.py build_ext -i
 
 
