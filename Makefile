@@ -1,3 +1,9 @@
+# TODO: add python
+# Right now, using the libffi from the system
+# https://devguide.python.org/setup/#build-dependencies
+# haven't gotten from-source libffi working yet (well, ctypes wasn't
+# building, not sure if libffi or something else)
+# - add PATH
 repos:
 	git clone https://github.com/openucx/ucx && \
 	git clone https://github.com/Akshay-Venkatesh/ucx-py && \
@@ -10,6 +16,24 @@ repos:
 	git remote rename origin upstream && \
 	git remote add origin https://github.com/TomAugspurger/ucx-py && \
 	popd
+
+
+Python-3.7.2:
+	wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+
+
+Envs/python-3.7.2: Python-3.7.2
+	cd Python-3.7.2 && \
+		./configure && \
+        make -j 8 && \
+		mkidr ../Envs && \
+		python -m venv ../Envs/python-3.7.2
+
+deps:
+	# make sure to activate first
+	cd dask && pip install -e . && cd ..
+	cd distributed && pip install -r dev-requirements.txt && pip install -e . &&
+	pip install ipython Cython
 
 ucx/install: ucx
 	cd ucx && \
