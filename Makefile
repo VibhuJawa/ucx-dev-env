@@ -5,34 +5,37 @@
 # building, not sure if libffi or something else)
 # - add PATH
 repos:
+	git clone https://github.com/dask/dask && \
 	git clone https://github.com/openucx/ucx && \
 	git clone https://github.com/Akshay-Venkatesh/ucx-py && \
 	git clone https://github.com/dask/distributed && \
-	pushd distributed && \
+	cd distributed && \
 	git remote rename origin upstream && \
 	git remote add origin https://github.com/TomAugspurger/distributed && \
-	popd
-	pushd ucx-py && \
+	git fetch origin && git checkout ucx && \
+	cd ..
+	cd ucx-py && \
 	git remote rename origin upstream && \
 	git remote add origin https://github.com/TomAugspurger/ucx-py && \
-	popd
+	cd ..
 
 
 Python-3.7.2:
 	wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
+	tar zxf Python-3.7.2.tgz
 
 
 Envs/python-3.7.2: Python-3.7.2
 	cd Python-3.7.2 && \
 		./configure && \
         make -j 8 && \
-		mkidr ../Envs && \
-		python -m venv ../Envs/python-3.7.2
+		mkdir -p ../Envs && \
+		./python -m venv ../Envs/python-3.7.2
 
 deps:
 	# make sure to activate first
 	cd dask && pip install -e . && cd ..
-	cd distributed && pip install -r dev-requirements.txt && pip install -e . &&
+	cd distributed && pip install -r dev-requirements.txt && pip install -e .
 	pip install ipython Cython
 
 ucx/install: ucx
