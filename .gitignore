@@ -12,3 +12,14 @@ Envs
 *.tgz
 *.tgz*
 Python-3.7.2
+
+dask-cuda
+dask-perf
+cudf
+cupy
+*.ipynb
+__pycache__
+work
+dask-worker-space
+*.lock
+staged-recipes

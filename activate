@@ -4,6 +4,7 @@ export LD_LIBRARY_PATH="$(pwd)/lib:$(pwd)/ucx/install/lib":/usr/local/cuda/lib64
 export CPATH="$(pwd)/include:$(pwd)/ucx/install/include":/usr/local/cuda/include:$CPATH
 export UCX_PY_CUDA_PATH=$CUDA_PREFIX
 export UCX_PY_UCX_PATH="$(pwd)/ucx/install"
+export UCX_DEFAULT_ADDRESS=10.33.225.160
 
 
 if [ -f Envs/python-3.7.2/bin/activate ]; then
