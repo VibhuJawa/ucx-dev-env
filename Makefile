@@ -38,8 +38,17 @@ deps:
 	cd distributed && pip install -r dev-requirements.txt && pip install -e .
 	pip install ipython Cython
 
+# Notes: working at 7568aec, failing on master.
+#   CXXLD    gtest
+#   /usr/bin/ld: uct/ib/gtest-test_ib.o: undefined reference to symbol 'ibv_free_device_list@@IBVERBS_1.1'
+#   //usr/lib/libibverbs.so.1: error adding symbols: DSO missing from command line
+#   collect2: error: ld returned 1 exit status
+#
+# failing commit is c790d130411737c3b6719e100669b650248cf34f
+#
 ucx/install: ucx
 	cd ucx && \
+	git checkout c790d130411737c3b6719e100669b650248cf34f~1 && \
 	./autogen.sh && \
 	./configure --prefix="$$(pwd)/install" --enable-debug --disable-cma --enable-gtest --enable-logging --with-cuda=/usr/local/cuda --with-gdrcopy=/usr --enable-profiling --enable-frame-pointer --enable-stats --enable-memtrack --enable-fault-injection --enable-debug-data --enable-mt && \
 	$(MAKE) -j 8 install && \
