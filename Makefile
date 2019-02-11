@@ -4,6 +4,10 @@
 # haven't gotten from-source libffi working yet (well, ctypes wasn't
 # building, not sure if libffi or something else)
 # - add PATH
+#
+
+CONDA_ROOT=dirname `dirname $CONDA_EXE`
+
 repos:
 	git clone https://github.com/dask/dask && \
 	git clone https://github.com/openucx/ucx && \
@@ -20,23 +24,13 @@ repos:
 	cd ..
 
 
-Python-3.7.2:
-	wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
-	tar zxf Python-3.7.2.tgz
-
-
-Envs/python-3.7.2: Python-3.7.2
-	cd Python-3.7.2 && \
-		./configure && \
-        make -j 8 && \
-		mkdir -p ../Envs && \
-		./python -m venv ../Envs/python-3.7.2
+env:
+	conda create -n ucx-dev -y python=3.7 ipython Cython pytest tornado numpy pandas
 
 deps:
 	# make sure to activate first
 	cd dask && pip install -e . && cd ..
 	cd distributed && pip install -r dev-requirements.txt && pip install -e .
-	pip install ipython Cython
 
 # Notes: working at 7568aec, failing on master.
 #   CXXLD    gtest
