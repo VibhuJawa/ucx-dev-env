@@ -8,7 +8,6 @@ export UCX_PY_UCX_PATH="$(pwd)/ucx/install"
 _ROOT=`dirname $CONDA_EXE`
 
 if [ -d $_ROOT/../envs/ucx-dev ]; then
-    echo "activating"
     conda activate ucx-dev
 else
     echo "No python environment yet. Run make"
