@@ -2,7 +2,7 @@ Setup a dev environment
 
 Manually set
 
-1. `CUDA_PREFIX` in `activate`
+1. `CUDA_PREFIX` in `activate_`
 
 
 Run the following
