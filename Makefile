@@ -20,17 +20,18 @@ repos:
 	cd ..
 	cd ucx-py && \
 	git remote rename origin upstream && \
-	git remote add origin https://github.com/TomAugspurger/ucx-py && \
+	git remote add origin https://github.com/TomAugspurger/ucx-py && git fetch origin && git checkout data-handling && \
 	cd ..
 
 
 env:
-	conda create -n ucx-dev -y python=3.7 ipython Cython pytest tornado numpy pandas
+	conda create -n ucx-dev-2 -c defaults -c conda-forge -c rapidsai -y python=3.7 ipython Cython pytest tornado numpy pandas pytest-asyncio numba
 
 deps:
 	# make sure to activate first
 	cd dask && pip install -e . && cd ..
 	cd distributed && pip install -r dev-requirements.txt && pip install -e .
+	pip install --pre cupy-cuda92
 
 # Notes: working at 7568aec, failing on master.
 #   CXXLD    gtest
@@ -44,7 +45,7 @@ ucx/install: ucx
 	cd ucx && \
 	git checkout c790d130411737c3b6719e100669b650248cf34f~1 && \
 	./autogen.sh && \
-	./configure --prefix="$$(pwd)/install" --enable-debug --disable-cma --enable-gtest --enable-logging --with-cuda=/usr/local/cuda --with-gdrcopy=/usr --enable-profiling --enable-frame-pointer --enable-stats --enable-memtrack --enable-fault-injection --enable-debug-data --enable-mt && \
+	./configure --prefix="$$(pwd)/install" --enable-debug --disable-cma --enable-gtest --enable-logging --with-cuda=/usr/local/cuda --enable-profiling --enable-frame-pointer --enable-stats --enable-memtrack --enable-fault-injection --enable-debug-data --enable-mt && \
 	$(MAKE) -j 8 install && \
   cd ..
 
@@ -57,5 +58,3 @@ build: ucx-py
 	UCX_PY_CUDA_PATH=/usr/local/cuda/ \
 	UCX_PY_UCX_PATH="$$(pwd)/ucx/install" \
 	cd ucx-py && make install
-
-
