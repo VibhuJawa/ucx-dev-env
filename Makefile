@@ -25,13 +25,13 @@ repos:
 
 
 env:
-	conda create -n ucx-dev-2 -c defaults -c conda-forge -c rapidsai -y python=3.7 ipython Cython pytest tornado numpy pandas pytest-asyncio numba
+	conda create -n ucx-dev-2 -c defaults -y python=3.7 ipython Cython pytest tornado numpy pandas  numba
 
 deps:
 	# make sure to activate first
 	cd dask && pip install -e . && cd ..
 	cd distributed && pip install -r dev-requirements.txt && pip install -e .
-	pip install --pre cupy-cuda92
+	pip install --pre cupy-cuda92 pytest
 
 # Notes: working at 7568aec, failing on master.
 #   CXXLD    gtest
