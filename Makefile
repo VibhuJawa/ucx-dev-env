@@ -31,7 +31,7 @@ deps:
 	# make sure to activate first
 	cd dask && pip install -e . && cd ..
 	cd distributed && pip install -r dev-requirements.txt && pip install -e .
-	pip install --pre cupy-cuda92 pytest
+	pip install --pre cupy-cuda92 pytest-asyncio
 
 # Notes: working at 7568aec, failing on master.
 #   CXXLD    gtest
