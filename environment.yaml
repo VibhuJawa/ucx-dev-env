@@ -1,0 +1,13 @@
+name: ucx-dev-test
+channels:
+    - defaults
+    - tomaugspurger
+dependencies:
+    - python >=3.7
+    - ucx
+    - ucx-py
+    - pytest
+    - cython
+    - numpy
+    - pip:
+        - pytest-asyncio
