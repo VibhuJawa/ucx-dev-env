@@ -20,7 +20,7 @@ repos:
 	cd .. && \
 	cd ucx-py && \
 	git remote rename origin upstream && \
-	git remote add origin https://github.com/TomAugspurger/ucx-py && 
+	git remote add origin https://github.com/TomAugspurger/ucx-py && \
 	git fetch origin && git checkout data-handling && \
 	cd ..
 
