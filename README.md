@@ -17,7 +17,7 @@ make ucx/install
 make build
 ```
 
-Verify the ucx-py isntall with
+Verify the ucx-py install with
 
 ```
 $ cd ucx-py
