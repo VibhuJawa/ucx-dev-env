@@ -16,7 +16,7 @@ repos:
 	cd distributed && \
 	git remote rename origin upstream && \
 	git remote add origin https://github.com/TomAugspurger/distributed && \
-	git fetch origin && git checkout data-handling && \
+	git fetch origin && git checkout ucx+data-handling && \
 	cd ..
 	cd ucx-py && \
 	git remote rename origin upstream && \
