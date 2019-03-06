@@ -54,9 +54,9 @@ ucx/install: ucx
 build: ucx-py
 	UCX_PREFIX="$$(pwd)/ucx/install" \
 	CUDA_PREFIX="/usr/local/cuda-9.2" \
-	LDFLAGS="$$-L(pwd)/ucx/install/lib -L${CUDA_PREFIX}/lib64 ${LDFLAGS}"\
+	LDFLAGS="$$-L(pwd)/ucx/install/lib -L${CUDA_PREFIX}/lib64 ${LDFLAGS}" \
 	LD_LIBRARY_PATH="$$(pwd)/ucx/install/lib":${CUDA_PREFIX}/lib64:$LD_LIBRARY_PATH \
 	CPATH="$$(pwd)/ucx/install/include":${CUDA_PREFIX}:include:$CPATH \
 	UCX_PY_CUDA_PATH=${CUDA_PREFIX} \
 	UCX_PY_UCX_PATH="$$(pwd)/ucx/install" \
-	cd ucx-py && && make install
+	cd ucx-py && make install
