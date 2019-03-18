@@ -1,16 +1,10 @@
-export UCX_PREFIX="$(pwd)/ucx/install"
-export CUDA_PREFIX="/usr/local/cuda-9.2"
-export LD_LIBRARY_PATH="$(pwd)/lib:$(pwd)/ucx/install/lib":/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export CPATH="$(pwd)/include:$(pwd)/ucx/install/include":/usr/local/cuda/include:$CPATH
-export UCX_PY_CUDA_PATH=$CUDA_PREFIX
-export UCX_PY_UCX_PATH="$(pwd)/ucx/install"
 export UCX_MEMTYPE_CACHE=n
 
 
 _ROOT=`dirname $CONDA_EXE`
 
-if [ -d $_ROOT/../envs/ucx-dev ]; then
-    conda activate ucx-dev
+if [ -d $_ROOT/../envs/ucx-dev-test ]; then
+    conda activate ucx-dev-test
 else
     echo "No python environment yet. Run make"
 fi

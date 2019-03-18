@@ -30,3 +30,9 @@ Verify the distributed isntall with
 ```
 python -m pytest distributed/comm/tests/test_ucx.py
 ```
+
+* Manually install dask-cudf
+* Apply ucx-py-make-diff.diff
+* Clone TomAugspurger/dask-perf
+* Use environment-dev.yaml, not environment.yaml
+

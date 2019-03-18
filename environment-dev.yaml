@@ -1,0 +1,40 @@
+name: ucx-dev-test
+channels:
+    - defaults
+    - rapidsai
+    - rapidsai-nightly/label/cuda9.2
+    - nvidia
+    - numba
+    - conda-forge
+dependencies:
+    - python >=3.7
+    - Cython
+    - pytest
+    - cython
+    - numpy
+    - cudf >=0.7
+    - joblib >=0.10.2
+    - mock >=2.0.0
+    - pandas >=0.19.2
+    - numpy >=1.11.0
+    - bokeh >=0.12.3
+    - requests >=2.12.4
+    - pyzmq >=16.0.2
+    - ipython >=5.0.0
+    - jupyter_client >=4.4.0
+    - ipykernel >=4.5.2
+    - pytest >=3.0.5
+    - dask
+    - click
+    - cloudpickle
+    - heapdict
+    # - msgpack
+    - psutil
+    - sortedcontainers
+    - tblib
+    - toolz
+    - zict
+    - pip:
+        - pytest-asyncio
+        - '--pre cupy-cuda92'
+        - 'prometheus_client >=0.6.0'

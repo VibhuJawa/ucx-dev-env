@@ -1,0 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 9d9c10f..0a141b8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,8 @@
+ CC = gcc
+-UCX_PATH  ?= "$(abspath $(shell pwd))/../ucx/install"
+ CUDA_PATH ?= "/usr/local/cuda"
+ 
+-CFLAGS  = "-I$(UCX_PATH)/include -I$(CUDA_PATH)/include"
+-LDFLAGS = "-L$(UCX_PATH)/lib -L$(CUDA_PATH)/lib64"
++CFLAGS  = "-I${CONDA_PREFIX}/include -I$(CUDA_PATH)/include"
++LDFLAGS = "-L${CONDA_PREFIX}/lib -L$(CUDA_PATH)/lib64"
+ 
+ install:
+ 	LDFLAGS=$(LDFLAGS) CFLAGS=$(CFLAGS) python setup.py build_ext -i --with-cuda
