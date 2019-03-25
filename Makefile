@@ -27,9 +27,7 @@ repos:
 	git clone https://github.com/dask/dask && \
 	git clone https://github.com/openucx/ucx && \
 	git clone https://github.com/dask/distributed && \
-	cd distributed && \
-	cd .. && \
-	cd ucx-py && \
+	git fetch origin && git checkout ucx && \
 	cd ..
 
 
