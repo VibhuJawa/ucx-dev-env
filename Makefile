@@ -8,25 +8,24 @@
 
 CONDA_ROOT=dirname `dirname $CONDA_EXE`
 
-#repos:
-#	git clone https://github.com/dask/dask && \
-#	git clone https://github.com/openucx/ucx && \
-#	git clone https://github.com/Akshay-Venkatesh/ucx-py && \
-#	git clone https://github.com/dask/distributed && \
-#	cd distributed && \
-#	git remote rename origin upstream && \
-#	git remote add origin https://github.com/TomAugspurger/distributed && \
-#	git fetch origin && git checkout ucx && \
-#	cd .. && \
-#	cd ucx-py && \
-#	git remote rename origin upstream && \
-#	git remote add origin https://github.com/TomAugspurger/ucx-py && \
-#	cd ..
-	
 repos:
 	git clone https://github.com/dask/dask && \
 	git clone https://github.com/openucx/ucx && \
-	git clone https://github.com/dask/distributed
+	git clone https://github.com/dask/distributed && \
+	cd distributed && \
+	git remote rename origin upstream && \
+	git remote add origin https://github.com/TomAugspurger/distributed && \
+	git fetch origin && git checkout ucx && \
+	cd .. && \
+	cd ucx-py && \
+	git remote rename origin upstream && \
+	git remote add origin https://github.com/TomAugspurger/ucx-py && \
+	cd ..
+	
+# repos:
+#	git clone https://github.com/dask/dask && \
+#	git clone https://github.com/openucx/ucx && \
+#	git clone https://github.com/dask/distributed
 
 env:
 	conda create -n ucx-dev -y python=3.7 \
