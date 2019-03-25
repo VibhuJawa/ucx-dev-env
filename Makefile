@@ -26,10 +26,7 @@ CONDA_ROOT=dirname `dirname $CONDA_EXE`
 repos:
 	git clone https://github.com/dask/dask && \
 	git clone https://github.com/openucx/ucx && \
-	git clone https://github.com/dask/distributed && \
-	git fetch origin && git checkout ucx && \
-	cd ..
-
+	git clone https://github.com/dask/distributed
 
 env:
 	conda create -n ucx-dev -y python=3.7 \
