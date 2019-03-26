@@ -9,8 +9,8 @@ export UCX_MEMTYPE_CACHE=n
 
 _ROOT=`dirname $CONDA_EXE`
 
-if [ -d $_ROOT/../envs/rapids ]; then
-    conda activate rapids
+if [ -d $_ROOT/../envs/${CONDA_ENV}]; then
+    conda activate ${CONDA_ENV}
 else
     echo "No python environment yet. Run make"
 fi
