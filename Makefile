@@ -10,7 +10,7 @@ CONDA_ROOT=dirname `dirname $CONDA_EXE`
 
 repos:
 	git clone https://github.com/dask/dask && \
-	git clone https://github.com/openucx/ucx && \
+	git clone https://github.com/openucx/ucx --branch /topic/tcpcm  --single-branch && \
 	git clone https://github.com/dask/distributed && \
 	cd distributed && \
 	git remote rename origin upstream && \
