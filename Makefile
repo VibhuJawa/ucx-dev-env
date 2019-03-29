@@ -44,7 +44,6 @@ deps:
 ucx/install: ucx
 	echo **********`which python`**********
 	cd ucx && \
-	# git checkout 7568aec  && \
 	./autogen.sh && \
 	./configure --prefix="$$(pwd)/install" --enable-debug --disable-cma --enable-gtest --enable-logging --with-cuda=/usr/local/cuda --enable-profiling --enable-frame-pointer --enable-stats --enable-memtrack --enable-fault-injection --enable-debug-data --enable-mt && \
 	$(MAKE) -j 8 install && \
